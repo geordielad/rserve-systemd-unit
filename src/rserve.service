@@ -1,0 +1,25 @@
+[Unit]
+Description=Rserve
+
+[Service]
+TimeoutSec=10s
+Type=forking
+PIDFile=/var/run/rserve/rserve.pid
+
+# Run ExecStartPre with root-permissions
+#PermissionsStartOnly=true
+#ExecStartPre=/bin/mkdir -p /var/run/rserve
+#ExecStartPre=/bin/chown -R nobody:nobody /var/run/rserve
+
+# Define runtime directory
+RuntimeDirectory=rserve
+RuntimeDirectoryMode=750
+
+# Run ExecStart with User=devlocal / Group=devlocal
+# Robin Cottiss-  nobody might work if nobody has permission to run R
+User=devlocal
+Group=devlocal
+ExecStart=/usr/bin/R CMD Rserve --quiet --vanilla --RS-pidfile /var/run/rserve/rserve.pid
+
+[Install]
+WantedBy=multi-user.target
