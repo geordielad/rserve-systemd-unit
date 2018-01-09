@@ -49,7 +49,7 @@ WantedBy=multi-user.target
 
 Let's look at the settings in detail:
 
-###### [Unit]
+### [Unit]
 
 gives the service a name. We will use this in any enable, start and stop commands. We will call ours Rserve.
 
@@ -57,7 +57,7 @@ gives the service a name. We will use this in any enable, start and stop command
 [Unit]
 Description=Rserve
 ```
-###### [Service]
+### [Service]
 
 This is the guts of a systemd service file. The file found on the internet had settings for some commands to run to help set up the service but they did not work as expected on our system so I found a different way to acheive the setup. The setup that is required to store the Process ID (pid) of the Rserve daemon so systemd can manage it. This is important and we need to get the pid becuase of the way we start rserve by launchine R that has a command to spawn rserve into its own daemon process. If we were starting a service that did not spawn a daemon the service file might be simpler.
 
@@ -114,7 +114,7 @@ Note that you can see the pid of the daemon after it's started by running the fo
 ps-ef | grep rserve
 ```
 
-###### [Install]
+### [Install]
 
 Finally we give systemd some information about when to run this service if we want enable it on boot. Simply put this tells systemd that we want to run rserve when the system is ready for users to login and connect over the network.
 
