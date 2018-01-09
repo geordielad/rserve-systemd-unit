@@ -169,11 +169,8 @@ sudo systemctl enable rserve.service
 
 You will get some feedback like this:
 
+![systemctl enable](images/systemctl-enable.png)
 
-```
-Created symlink from /etc/systemd/system/multi-user.target.wants/rserve.service to /etc/systemd/system/rserve.service.
-devlocal@bhutchinson-rserve2:~$
-```
 To test this you should reboot the system and confirm that rserve is running right after startup.
 
 ```
